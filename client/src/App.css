@@ -1,46 +1,49 @@
-.AppBar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 56px;
-  background: #C70039;
-}
 
-.AppBar_logo a {
-  color: white;
-  text-decoration: none;
-  font-size: 1.5rem;
-}
-
-.AppBar_Nav {
-  display: flex;
-  height: 100%;
-  align-items: center;
-  padding: 0 1rem;
-}
-
-.spacer {
-  flex: 1;
-}
-
-.AppBar_select ul {
-  list-style: none;
+body {
   margin: 0;
-  padding: 0;
-  display: flex;
 }
 
-.AppBar_select li {
-  padding: 0 0.5rem;
+.sidebar {
+  grid-area: sidebar;
 }
 
-.AppBar_select a {
-  color: white;
-  text-decoration: none;
+.content {
+  grid-area: content;
 }
 
-.AppBar_select a:hover,
-.AppBar_select a:active {
-  color: #060606
+.header {
+  grid-area: header;
+}
+
+.footer {
+  grid-area: footer;
+}
+
+
+.container {
+  display: grid;
+  height: 100vh;
+  /* grid-gap: 10px; */
+  grid-template-columns: 250px 1fr;
+  grid-template-rows: auto 1fr auto;  
+  grid-template-areas: 
+  "header header header"
+  "sidebar content content"
+  "footer  footer  footer";
+  background-color: #fff;
+  color: #444;
+}
+
+
+.box {
+  background-color: #444;
+  color: #fff;
+}
+.content {
+  background-color: blue;
+}
+
+.header,
+.footer {
+  background-color: #999;
 }

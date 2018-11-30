@@ -1,11 +1,11 @@
 import React from 'react';
-import { Checkbox, Avatar, TextField, Button, Typography, Divider, FormControlLabel } from '@material-ui/core';
+import { Paper, Checkbox, Avatar, TextField, Button, Typography, Divider, FormControlLabel } from '@material-ui/core';
 import LockIcon from '@material-ui/icons/LockOutlined';
 
 import './Login.scss';
 
 const login = () => (
-  <>
+  <Paper className="test-mui">
     <Avatar>
       <LockIcon />
     </Avatar>
@@ -70,7 +70,7 @@ const login = () => (
         Register
       </Button>
     </form>
-  </>
+  </Paper>
 );
 
 export default login;

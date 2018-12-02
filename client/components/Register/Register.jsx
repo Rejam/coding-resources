@@ -2,12 +2,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import {
+<<<<<<< HEAD
   Paper,
+=======
+>>>>>>> master
   Avatar,
   TextField,
   Button,
   Typography,
+<<<<<<< HEAD
   Divider,
+=======
+  Divider
+>>>>>>> master
 } from '@material-ui/core';
 import AssignmentInd from '@material-ui/icons/AssignmentInd';
 
@@ -39,7 +46,11 @@ const Register = () => {
   };
 
   return (
+<<<<<<< HEAD
     <Paper>
+=======
+    <>
+>>>>>>> master
       <Avatar>
         <AssignmentInd />
       </Avatar>
@@ -118,7 +129,11 @@ const Register = () => {
           Log In
         </Link>
       </Button>
+<<<<<<< HEAD
     </Paper>
+=======
+    </>
+>>>>>>> master
   );
 };
 export default Register;

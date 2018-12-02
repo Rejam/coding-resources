@@ -40,9 +40,9 @@ const api = {
       });
       API.defaults.headers.common.Authorization = `Bearer ${res.data.token}`;
 
-      return res.data;
+      return true;
     } catch (error) {
-      return error.response.data;
+      return false;
     }
   },
   /**
@@ -57,17 +57,31 @@ const api = {
     };
   },
   /**
+   * Fetch categories
+   * @public
+   * @returns {Promise} Array of categories
+   */
+  getCategories: async () => {
+    try {
+      const res = await API.get('/resources/categories');
+      return res.data;
+    } catch (error) {
+      return ({ categories: ['Fetch error'] });
+    }
+  },
+  /**
    * Fetch resources
    * @public
    * @param {string} [category]
    * @returns {Promise} Array of resources
    */
-  getResources: async (category = undefined) => {
+  getResources: async (category) => {
+    const cat = category || 'all';
     try {
-      const res = await API.get('/resources', { category });
+      const res = await API.get(`/resources/c/${cat}`);
       return res.data;
     } catch (error) {
-      return error.response.data;
+      return error.response;
     }
   },
   /**

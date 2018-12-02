@@ -1,16 +1,14 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import { NavBar, Menu } from './components';
+import Sidebar from 'react-sidebar';
+import { NavBar, Main, Categories } from './components';
+import api from './api';
 import './App.scss';
 
-const app = () => (
-  <BrowserRouter>
-    <>
-      <NavBar />
-      <Menu />
-    </>
-  </BrowserRouter>
-);
+class App extends React.Component {
+  state = {
+    categories: [],
+    isLoggedIn: false,
+  };
 
 export default app;
 

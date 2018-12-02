@@ -16,8 +16,7 @@ async function getAllComments(req, res) {
       comments,
     });
   } catch (error) {
-    console.log(JSON.stringify(error, Object.getOwnPropertyNames(error))
-    )
+    console.log(JSON.stringify(error, Object.getOwnPropertyNames(error)));
     res.json({
       success: false,
       error: JSON.stringify(error, Object.getOwnPropertyNames(error)),

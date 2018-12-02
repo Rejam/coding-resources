@@ -50,7 +50,17 @@ async function login(req, res) {
   }
 }
 
+async function google(req, res) {
+  res.send('Hello');
+}
+
+async function googleRedirect(req, res) {
+  res.send('Hello');
+}
+
 module.exports = {
   register,
   login,
+  google,
+  googleRedirect,
 };

@@ -35,13 +35,8 @@ class SubmitLink extends Component {
     const { tags, category } = this.state;
 
     return (
-<<<<<<< HEAD
       <div className="root">
         <form action="/submit" method="POST">
-=======
-      <>
-        <form>
->>>>>>> master
           <div>
             <TextField
               required

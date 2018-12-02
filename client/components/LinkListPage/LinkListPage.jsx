@@ -5,7 +5,11 @@ import api from '../../api';
 import './LinkListPage.scss';
 
 class ResourceList extends React.Component {
-  state = { resources: [] };
+  constructor(props) {
+    super(props);
+
+    this.state = { resources: [] };
+  }
 
   componentDidMount() {
     this.fetchResources();
@@ -14,17 +18,20 @@ class ResourceList extends React.Component {
   componentDidUpdate(prevProps) {
     const { cat: prevCat } = prevProps.match.params;
     const { cat: currCat } = this.props.match.params;
+
     if (prevCat !== currCat) this.fetchResources();
   }
 
   async fetchResources() {
     const { cat } = this.props.match.params;
     const { resources } = await api.getResources(cat);
+
     this.setState({ resources });
   }
 
   render() {
     const { resources } = this.state;
+
     return (
     <>
       {resources.length

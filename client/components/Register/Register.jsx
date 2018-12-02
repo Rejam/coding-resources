@@ -1,13 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-import {
-  Avatar,
-  TextField,
-  Button,
-  Typography,
-  Divider
-} from '@material-ui/core';
+import { Avatar, TextField, Button, Typography, Divider } from '@material-ui/core';
 import AssignmentInd from '@material-ui/icons/AssignmentInd';
 
 import './Register.scss';
@@ -22,7 +15,7 @@ const Register = () => {
       email: { value: email },
       emailConfirm: { value: emailConfirm },
       password: { value: password },
-      passwordConfirm: { value: passwordConfirm }
+      passwordConfirm: { value: passwordConfirm },
     } = form.elements;
 
     if (email === emailConfirm && password === passwordConfirm) {
@@ -39,9 +32,7 @@ const Register = () => {
 
   return (
     <>
-      <Avatar>
-        <AssignmentInd />
-      </Avatar>
+      <Avatar><AssignmentInd /></Avatar>
       <form onSubmit={register}>
         <div>
           <TextField
@@ -100,24 +91,16 @@ const Register = () => {
             variant="outlined"
           />
         </div>
-        <div>
-          <Button type="submit" variant="contained" color="primary">
-            Register Account
-          </Button>
-        </div>
+        <div><Button type="submit" variant="contained" color="primary">Register Account</Button></div>
       </form>
-
       <Divider className="form-spacer" />
-
       <Typography variant="h6" className="form-spacer">
         Already have an account?
       </Typography>
       <Button variant="contained" color="secondary">
-        <Link style={{ color: 'white', textDecoration: 'none' }} to="/login">
-          Log In
-        </Link>
+        <Link style={{ color: 'white', textDecoration: 'none' }} to="/login">Log In</Link>
       </Button>
-    </>
+      </>
   );
 };
 

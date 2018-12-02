@@ -7,7 +7,7 @@ import './NavBar.scss';
 
 const NavButton = ({ link, children, onClick }) => (
   <Button onClick={onClick}>
-    <NavLink style={{ color: 'white' }} to={link}>{children}</NavLink>
+    <NavLink style={{ color: 'white', textDecoration: 'none' }} to={link}>{children}</NavLink>
   </Button>
 );
 

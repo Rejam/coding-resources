@@ -28,9 +28,7 @@ class MenuAppBar extends React.Component {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" color="inherit" className="grow">
-            <NavButton link="/">
-              Programming Reference Site
-            </NavButton>
+            <NavButton link="/">Programming Reference Site</NavButton>
           </Typography>
           {
             isLoggedIn ? (

@@ -12,6 +12,7 @@ const api = {
    * @param {string} user.password
    * @returns {Promise}
    */
+
   register: async ({ username, email, password }) => {
     try {
       const res = await API.post('auth/register', {
@@ -19,6 +20,7 @@ const api = {
         email,
         password,
       });
+
       return res.data;
     } catch (error) {
       return error.response.data;

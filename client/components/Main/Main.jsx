@@ -1,15 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router-dom';
+
 import './Main.scss';
-import {
-  Intro,
-  Login,
-  Register,
-  LinkListPage,
-  SubmitLink,
-  IndividualLink,
-} from '..';
+import { Intro, Login, Register, LinkListPage, SubmitLink, IndividualLink } from '..';
 
 const Main = ({ categories, setLogin }) => (
   <div className="main-content">

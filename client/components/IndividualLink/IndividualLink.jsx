@@ -1,15 +1,19 @@
 import React from 'react';
 import { Button, Chip } from '@material-ui/core';
-import api from '../../api';
 
 import './IndividualLink.scss';
+import api from '../../api';
 
 class ViewResource extends React.Component {
-  state = { resource: null };
+  constructor(props) {
+    super(props);
+    this.state = { resource: null };
+  }
 
   async componentDidMount() {
     const { id } = this.props.match.params;
     const res = await api.getOneResource(id);
+
     if (res.success) this.setState({ resource: res.resource });
   }
 

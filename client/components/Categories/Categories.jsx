@@ -15,8 +15,6 @@ const CategoryList = ({ categories }) => (
   </List>
 );
 
-CategoryList.propTypes = {
-  categories: PropTypes.array.isRequired,
-};
+CategoryList.propTypes = { categories: PropTypes.array.isRequired };
 
 export default CategoryList;

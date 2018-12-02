@@ -1,8 +1,11 @@
 import React from 'react';
 import Sidebar from 'react-sidebar';
+
 import { NavBar, Main, Categories } from './components';
 import api from './api';
 import './App.scss';
+
+window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
 
 class App extends React.Component {
   state = {

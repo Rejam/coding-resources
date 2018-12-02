@@ -5,9 +5,9 @@ import LockIcon from '@material-ui/icons/LockOutlined';
 import './Login.scss';
 
 const login = () => (
-  <Paper>
+  <Paper className="body">
     <Avatar>
-      <LockIcon />
+      <LockIcon className="test" />
     </Avatar>
     <Typography component="h1" variant="h5">
       Sign in

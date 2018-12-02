@@ -1,10 +1,11 @@
 import React from 'react';
 import { Typography, Divider } from '@material-ui/core';
 
+
 import './Intro.scss';
 
 const intro = () => (
-  <>
+  <div>
     <Typography variant="h5" align="center">
         Welcome to the Programming Reference Site
     </Typography>
@@ -16,7 +17,7 @@ const intro = () => (
       This website was created to help the individual programmers to find the best sources that are backed up by other programmers, who have looked into the references themselves!
       Please feel free to add any input on this ongoing project! We would love to hear your insight and improve the site!
     </Typography>
-  </>
+  </div>
 );
 
 export default intro;

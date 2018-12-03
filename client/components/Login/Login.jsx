@@ -17,10 +17,6 @@ import {
 import api from '../../api';
 import './Login.scss';
 
-<<<<<<< HEAD
-const login = () => (
-  <Paper className="body">
-=======
 const Login = ({ setLogin, history }) => {
 
   const login = async (e) => {
@@ -40,7 +36,6 @@ const Login = ({ setLogin, history }) => {
 
   return (
   <>
->>>>>>> master
     <Avatar>
       <LockIcon className="test" />
     </Avatar>

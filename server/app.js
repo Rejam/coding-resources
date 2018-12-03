@@ -5,9 +5,11 @@ const helmet = require('helmet');
 const cors = require('cors');
 const passport = require('passport');
 const session = require('express-session');
+const cookieSession = require('cookie-session');
 
 const app = express();
 
+app.use(cookieSession({ keys: ['asdadad'] }));
 app.use(bodyParser.json());
 app.use(session({ secret: 'Secret' }));
 app.use(morgan('combined'));

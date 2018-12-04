@@ -6,11 +6,8 @@ const cors = require('cors');
 const passport = require('passport');
 const session = require('express-session');
 const cookieSession = require('cookie-session');
-const cookieParser = require('cookie-parser');
 
 const app = express();
-
-app.use(cookieParser());
 
 app.use(cookieSession({
   name: 'session',

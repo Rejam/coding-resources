@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router-dom';
 import './Main.scss';
 import { Intro } from '.';
-import { Login } from '../Auth';
 import {
-  RegisterC,
   ResourceC,
   NewResourceC,
   EditResourceC,
@@ -25,22 +23,9 @@ const defaultTags = [
   'Getting Hired',
 ];
 
-const Main = ({ categories, login }) => (
+const Main = ({ categories }) => (
   <div className="main-content">
     <Switch>
-      <Route
-        path="/login"
-        render={props => (
-          <Login
-            {...props}
-            login={login}
-          />
-        )}
-      />
-      <Route
-        path="/register"
-        component={RegisterC}
-      />
       <Route
         exact
         path="/resources"
@@ -82,10 +67,6 @@ const Main = ({ categories, login }) => (
   </div>
 );
 
-Main.propTypes = {
-  categories: PropTypes.array,
-  login: PropTypes.func,
-  logout: PropTypes.func,
-};
+Main.propTypes = { categories: PropTypes.array };
 
 export default Main;

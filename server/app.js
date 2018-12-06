@@ -10,6 +10,10 @@ app.use(morgan('dev'));
 app.use(helmet());
 app.use(cors());
 
+// auth
+require('./auth')(app);
+
+// Routes
 require('./routes')(app);
 
 module.exports = app;

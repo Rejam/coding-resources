@@ -1,11 +1,10 @@
 const router = require('express').Router({ mergeParams: true });
-const { loginRequired } = require('../auth');
 const Comment = require('../models/comment');
 const Resource = require('../models/resource');
 
 router.get('/', getAllComments);
 router.get('/:comment_id', getOneComment);
-router.post('/', loginRequired, submitComment);
+router.post('/', submitComment);
 
 // Route functions
 async function getAllComments(req, res) {

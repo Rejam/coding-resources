@@ -42,38 +42,6 @@ const api = {
     }
   },
   /**
-   * User log in
-   * @public
-   * @param {Object} credentials
-   * @param {string} username
-   * @param {string} password
-   * @returns {Promise}
-   */
-  login: async ({ username, password }) => {
-    try {
-      const res = await API.post('/auth/login', {
-        username,
-        password,
-      });
-      const { token } = res.data;
-      Token.set(token);
-      return token;
-    } catch (error) {
-      return false;
-    }
-  },
-  /**
-   * User logout
-   * @public
-   */
-  logout: () => {
-    Token.clear();
-    return {
-      success: true,
-      message: 'Successfully logged out',
-    };
-  },
-  /**
    * Fetch categories
    * @public
    * @returns {Promise} Array of categories

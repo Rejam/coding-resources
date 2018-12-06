@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import api from '../../api';
+import api from '../../services/api';
 import { Resource } from '../Resources';
 
 class ResourceC extends React.Component {

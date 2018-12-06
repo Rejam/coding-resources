@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ResourceForm } from '../Resources';
-import api from '../../api';
+import api from '../../services/api';
+import history from '../../services/history';
 
 class EditResourceC extends Component {
   static propTypes = {
     categories: PropTypes.array.isRequired,
     defaultTags: PropTypes.array.isRequired,
-    history: PropTypes.any,
   };
 
   state = {
@@ -36,7 +36,6 @@ class EditResourceC extends Component {
     const { match: { params: { id } } } = this.props;
     const res = await api.updateResource(id, resource);
     if (res.success) {
-      const { history } = this.props;
       history.push(`/resources/${id}`);
     } else {
       this.setState({ error: 'Could not update. Unauthorized.' });

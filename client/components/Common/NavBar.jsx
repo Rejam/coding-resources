@@ -1,40 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { AppBar, Toolbar, Typography } from '@material-ui/core';
+import { AppBar, Toolbar, Typography, Button } from '@material-ui/core';
 import NavButton from './NavButton';
 
 import './NavBar.scss';
 
-const MenuAppBar = ({ isLoggedIn, logout }) => (
+const MenuAppBar = ({ isAuthenticated, login, logout }) => (
   <AppBar position="static">
     <Toolbar>
       <Typography variant="h6" color="inherit" className="grow">
         <NavButton link="/">Programming Reference Site</NavButton>
       </Typography>
-      { isLoggedIn
+      { isAuthenticated
         ? (
           <>
             <NavButton link="/submit-resource">
               Submit Resource
             </NavButton>
-            <NavButton link="/" onClick={logout}>
+            <Button onClick={logout}>
               Log Out
-            </NavButton>
+            </Button>
           </>
         )
-        : (
-          <>
-            <NavButton link="/login">Log In</NavButton>
-            <NavButton link="/register">Sign Up</NavButton>
-          </>
-        )
+        : <Button onClick={login}>Log In</Button>
       }
     </Toolbar>
   </AppBar>
 );
 
 MenuAppBar.propTypes = {
-  isLoggedIn: PropTypes.bool,
+  isAuthenticated: PropTypes.bool,
+  login: PropTypes.func,
   logout: PropTypes.func,
 };
 

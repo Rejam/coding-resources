@@ -1,11 +1,10 @@
 const router = require('express').Router();
 const User = require('../models/user');
-const { loginRequired } = require('../auth');
 
 router.get('/', getAllUsers);
-router.get('/:id', getOneUser)
-router.put('/:id', loginRequired, editUser);
-router.delete('/:id', loginRequired, deleteUser);
+router.get('/:id', getOneUser);
+router.put('/:id', editUser);
+router.delete('/:id', deleteUser);
 router.delete('/', deleteAllUsers);
 
 // Route functions
@@ -45,7 +44,7 @@ async function getOneUser(req, res) {
 async function editUser(req, res) {
   try {
     const { update } = req.body;
-    const user = await User.findById(req.params.id)
+    const user = await User.findById(req.params.id);
     
     if (!user) throw new Error('User not found').message;
 

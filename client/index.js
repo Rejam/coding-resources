@@ -1,17 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import { Token } from './api';
+import { Router } from 'react-router-dom';
 import App from './App';
-
-const token = window.localStorage.getItem('token');
-if (token) {
-  Token.set(token);
-}
+import history from './services/history';
 
 ReactDOM.render(
-  <BrowserRouter>
-    <App loggedIn={Boolean(token)} />
-  </BrowserRouter>,
-  document.getElementById('root')
+  <Router history={history}>
+    <App />
+  </Router>,
+  document.getElementById('root'),
 );

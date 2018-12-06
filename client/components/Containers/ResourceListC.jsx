@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ResourceList } from '../Resources';
-import api from '../../api';
+import api from '../../services/api';
 
 class ResourceListC extends React.Component {
   state = {

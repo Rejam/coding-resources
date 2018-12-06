@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ResourceForm } from '../Resources';
-import api from '../../api';
+import api from '../../services/api';
+import history from '../../services/history';
 
 class NewResourceC extends Component {
   static propTypes = {
     categories: PropTypes.array.isRequired,
     defaultTags: PropTypes.array.isRequired,
-    history: PropTypes.any,
   };
 
   state = { error: null };
@@ -15,7 +15,6 @@ class NewResourceC extends Component {
   submit = async (resource) => {
     const res = await api.submitResource(resource);
     if (res.success) {
-      const { history } = this.props;
       history.push(`/resources/${res.resourceId}`);
     } else {
       this.setState({ error: 'Unable to submit' });

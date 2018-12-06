@@ -10,4 +10,12 @@ router.post('/login', loginValidation, login);
 router.get('/google', authenticate);
 router.get('/google/redirect', authenticateRedirect);
 
+router.get('/google/failure', (req, res) => {
+  res.send('Failure');
+});
+
+router.get('/google/success', (req, res) => {
+  res.send('Success');
+});
+
 module.exports = router;

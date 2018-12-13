@@ -7,6 +7,12 @@ module.exports.entry = { filename: './client/index.js' };
 module.exports.devServer = {
   historyApiFallback: true,
   contentBase: './dist',
+  proxy: {
+    '/api': {
+      target: 'http://localhost:5000',
+      pathRewrite: { '^/api': '' }
+    },
+  },
 };
 
 module.exports.output = { filename: 'main.js' };

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { AppBar, Toolbar, Typography, Button } from '@material-ui/core';
 import NavButton from './NavButton';
+import API from '../../services/api';
 
 import './NavBar.scss';
 
@@ -22,7 +23,12 @@ const MenuAppBar = ({ isAuthenticated, login, logout }) => (
             </Button>
           </>
         )
-        : <Button onClick={login}>Log In</Button>
+        : (
+          <>
+            <Button onClick={login}>Log in Front</Button>
+            <Button onClick={API.login}>Log In Back</Button>
+          </>
+        )
       }
     </Toolbar>
   </AppBar>

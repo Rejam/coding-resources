@@ -1,17 +1,12 @@
 const passport = require('passport');
 const router = require('express').Router();
 
-router.post('/login', passport.authenticate('auth0',
-  { scope: 'openid email profile' }),
-(req, res) => {
-  console.log(res.user);
-  // res.redirect('/');
-});
+router.get('/login',
+  passport.authenticate('auth0', { session: false }));
 
-router.post('/redirect', passport.authenticate('auth0'),
-  (req, res) => {
-    console.log(res.user);
-    res.redirect('/');
-  });
+router.post('/redirect', passport.authenticate('auth0', { session: false }), (req, res) => {
+  console.log('/routes/auth/redirect');
+  res.send('redirected');
+});
 
 module.exports = router;

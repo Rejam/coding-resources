@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: process.env.SERVER || 'http://localhost:5000/' });
+const API = axios.create({ baseURL: process.env.SERVER || '/api' });
 
 export const Token = {
   set: (token) =>   {
@@ -14,6 +14,25 @@ export const Token = {
 };
 
 const api = {
+  /**
+   * Login
+   * @public
+   * @returns {Promise}
+   */
+  login: async () => {
+    try {
+      const res = await axios.get('api/auth/login');
+      return {
+        success: true,
+        data: res,
+      };
+    } catch (error) {
+      return {
+        success: false,
+        error,
+      };
+    }
+  },
   /**
    * Register a new user
    * @public

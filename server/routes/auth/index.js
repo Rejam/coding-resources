@@ -1,12 +1,9 @@
-const passport = require('passport');
 const router = require('express').Router();
+const checkJwt = require('../../auth')
 
-router.get('/login',
-  passport.authenticate('auth0', { session: false }));
-
-router.post('/redirect', passport.authenticate('auth0', { session: false }), (req, res) => {
-  console.log('/routes/auth/redirect');
-  res.send('redirected');
+router.post('/login', checkJwt, (req, res) => {
+  console.log('logged in', req.user);
+  res.status(200).send();
 });
 
 module.exports = router;

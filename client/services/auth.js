@@ -1,54 +1,64 @@
 import auth0 from 'auth0-js';
-import history from './history';
 
-export default {
-  auth0: new auth0.WebAuth({
-    domain: 'rejam.eu.auth0.com',
-    clientID: 'i5nd0pTgD658BmsbFDUa0CM7pB4WJsxA',
-    redirectUri: 'http://localhost:8080/login',
-    responseType: 'token id_token',
-    scope: 'openid',
-  }),
-  login() {
-    this.auth0.authorize();
-  },
-
-  handleAuthentication() {
-    this.auth0.parseHash((err, authResult) => {
-      const {accessToken, idToken } = authResult;
-      if (authResult && accessToken && idToken) {
-        this.setSession(authResult);
-        history.replace('/');
-      } else if (err) {
-        history.replace('/');
-        console.log(err);
-      }
+class Auth {
+  constructor() {
+    this.auth0 = new auth0.WebAuth({
+      // the following three lines MUST be updated
+      domain: 'rejam.eu.auth0.com',
+      audience: 'https://rejam.eu.auth0.com/userinfo',
+      clientID: 'i5nd0pTgD658BmsbFDUa0CM7pB4WJsxA',
+      redirectUri: 'http://localhost:8080/auth/callback',
+      responseType: 'id_token',
+      scope: 'openid profile',
     });
-  },
 
-  setSession(authResult) {
-    // Set the time that the Access Token will expire at
-    const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
-    localStorage.setItem('access_token', authResult.accessToken);
-    localStorage.setItem('id_token', authResult.idToken);
-    localStorage.setItem('expires_at', expiresAt);
-    // navigate to the home route
-    history.replace('/home');    
-  },
+    this.getProfile = this.getProfile.bind(this);
+    this.handleAuthentication = this.handleAuthentication.bind(this);
+    this.isAuthenticated = this.isAuthenticated.bind(this);
+    this.signIn = this.signIn.bind(this);
+    this.signOut = this.signOut.bind(this);
+  }
 
-  logout() {
-    // Clear Access Token and ID Token from local storage
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('id_token');
-    localStorage.removeItem('expires_at');
-    // navigate to the home route
-    history.replace('/home');
-  },
+  getProfile() {
+    return this.profile;
+  }
+
+  getIdToken() {
+    return this.idToken;
+  }
 
   isAuthenticated() {
-    // Check whether the current time is past the
-    // Access Token's expiry time
-    const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
-    return new Date().getTime() < expiresAt;
-  },
-};
+    return new Date().getTime() < this.expiresAt;
+  }
+
+  signIn() {
+    this.auth0.authorize();
+  }
+
+  handleAuthentication() {
+    return new Promise((resolve, reject) => {
+      this.auth0.parseHash((err, authResult) => {
+        if (err) return reject(err);
+        if (!authResult || !authResult.idToken) {
+          return reject(err);
+        }
+        this.idToken = authResult.idToken;
+        this.profile = authResult.idTokenPayload;
+        // set the time that the id token will expire at
+        this.expiresAt = authResult.idTokenPayload.exp * 1000;
+        resolve();
+      });
+    })
+  }
+
+  signOut() {
+    // clear id token, profile, and expiration
+    this.idToken = null;
+    this.profile = null;
+    this.expiresAt = null;
+  }
+}
+
+const auth0Client = new Auth();
+
+export default auth0Client;

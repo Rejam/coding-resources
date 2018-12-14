@@ -8,19 +8,10 @@ const app = express();
 app.use(bodyParser.json());
 app.use(morgan('dev'));
 app.use(helmet());
-app.use(cors({
-  "access-control-allow-origin": '*'
-}));
-app.options('*', cors())
-
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:5000');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  next();
-});
+app.use(cors());
 
 // auth
-require('./auth')(app);
+// require('./auth')(app);
 
 // Routes
 require('./routes')(app);

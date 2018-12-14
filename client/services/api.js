@@ -1,4 +1,6 @@
 import axios from 'axios';
+import auth0Client from './auth';
+import history from './history';
 
 const API = axios.create({ baseURL: process.env.SERVER || '/api' });
 
@@ -21,11 +23,7 @@ const api = {
    */
   login: async () => {
     try {
-      const res = await axios.get('api/auth/login');
-      return {
-        success: true,
-        data: res,
-      };
+      auth0Client.signIn();
     } catch (error) {
       return {
         success: false,
@@ -34,29 +32,18 @@ const api = {
     }
   },
   /**
-   * Register a new user
+   * Logout
    * @public
-   * @param {Object} user
-   * @param {string} user.username
-   * @param {string} user.email
-   * @param {string} user.password
    * @returns {Promise}
    */
-  register: async ({ username, email, password }) => {
+  logout: async () => {
     try {
-      const res = await API.post('auth/register', {
-        username,
-        email,
-        password,
-      });
-      return {
-        success: true,
-        data: res.data,
-      };
+      auth0Client.logout();
+      history.replace('/');
     } catch (error) {
       return {
         success: false,
-        errors: error.response.data,
+        error,
       };
     }
   },

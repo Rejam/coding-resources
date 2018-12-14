@@ -1,48 +1,30 @@
 import React from 'react';
 import Sidebar from 'react-sidebar';
-import { NavBar, Main, CategoryList } from './components/Common';
+import { Main, CategoryList } from './components/Common';
+import { AppBarC } from './components/Containers';
 import api from './services/api';
 import auth from './services/auth';
 import history from './services/history';
 import './App.scss';
 
 class App extends React.Component {
-  state = {
-    categories: [],
-    isAuthenticated: false,
-  };
+  state = { categories: [] };
 
   async componentDidMount() {
     const { categories } = await api.getCategories();
     this.setState({ categories });
-    const isAuthenticated = await auth.isAuthenticated();
-    this.setState({ isAuthenticated });
   }
 
   gotTo = (route) => {
     history.replace(`/${route}`);
   }
 
-  login = () => {
-    auth.login();
-    this.setState({ isAuthenticated: true });
-  }
-
-  logout = () => {
-    auth.logout();
-    this.setState({ isAuthenticated: false });
-  }
-
   render() {
-    const { categories, isAuthenticated } = this.state;
+    const { categories } = this.state;
 
     return (
       <>
-        <NavBar
-          isAuthenticated={isAuthenticated}
-          logout={this.logout}
-          login={this.login}
-        />
+        <AppBarC />
         <Sidebar
           open
           docked

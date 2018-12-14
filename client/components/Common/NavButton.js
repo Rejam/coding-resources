@@ -3,17 +3,24 @@ import PropTypes from 'prop-types';
 import { Button } from '@material-ui/core';
 import { NavLink } from 'react-router-dom';
 
-import './NavBar.scss';
+import './AppBar.scss';
 
-const NavButton = ({ link, children, onClick }) => (
-  <Button onClick={onClick}>
-    <NavLink style={{ color: 'white' }} to={link}>{children}</NavLink>
-  </Button>
-);
+const NavButton = ({ children, link, onClick }) => {
+  return link
+    ? (
+      <NavLink style={{ color: 'white' }} to={link}>
+        {children}
+      </NavLink>
+    ) : (
+      <Button onClick={onClick} style={{ color: 'white' }}>
+        {children}
+      </Button>
+    )
+};
 
 NavButton.propTypes = {
-  link: PropTypes.string.isRequired,
   children: PropTypes.any.isRequired,
+  link: PropTypes.string,
   onClick: PropTypes.func,
 };
 

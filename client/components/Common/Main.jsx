@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router-dom';
 import './Main.scss';
-import { Intro, Login } from '.';
+import { Intro, Callback } from '.';
 import {
   ResourceC,
   NewResourceC,
@@ -62,7 +62,7 @@ const Main = ({ categories }) => (
         path="/resources/c/:cat"
         component={ResourceListC}
       />
-      <Route path="/auth/callback" component={Login} />
+      <Route path="/auth/callback" component={Callback} />
       <Route path="/" component={Intro} />
     </Switch>
   </div>

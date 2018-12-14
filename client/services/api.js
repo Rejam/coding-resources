@@ -17,37 +17,6 @@ export const Token = {
 
 const api = {
   /**
-   * Login
-   * @public
-   * @returns {Promise}
-   */
-  login: async () => {
-    try {
-      auth0Client.signIn();
-    } catch (error) {
-      return {
-        success: false,
-        error,
-      };
-    }
-  },
-  /**
-   * Logout
-   * @public
-   * @returns {Promise}
-   */
-  logout: async () => {
-    try {
-      auth0Client.logout();
-      history.replace('/');
-    } catch (error) {
-      return {
-        success: false,
-        error,
-      };
-    }
-  },
-  /**
    * Fetch categories
    * @public
    * @returns {Promise} Array of categories

@@ -2,3 +2,24 @@
   margin-top: 2rem !important;
   margin-bottom: 2rem !important;
 }
+
+// @mixin flex {
+//   display: -webkit-flex;
+//   display: flex;
+// }
+
+.main {
+  justify-content: center;
+}
+
+.root {
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.icon {
+  vertical-align: middle;
+  display: inline-block;
+}

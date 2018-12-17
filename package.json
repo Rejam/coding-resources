@@ -33,7 +33,6 @@
     "@babel/runtime": "^7.1.5",
     "@material-ui/core": "^3.4.0",
     "@material-ui/icons": "^3.0.1",
-    "argon2": "^0.19.3",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",

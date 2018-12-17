@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import LockIcon from '@material-ui/icons/LockOutlined';
 import {
+  Grid,
+  Card,
   Avatar,
   TextField,
   Button,
@@ -33,52 +35,59 @@ const Login = ({ login, history }) => {
     margin: 'normal',
     variant: 'outlined',
   };
+
   return (
-  <>
-    <Avatar>
-      <LockIcon />
-    </Avatar>
-    <form onSubmit={handleSubmit}>
-      <div>
-        <TextField
-          label="username"
-          type="text"
-          name="username"
-          autoComplete="username"
-          {...config}
-        />
-      </div>
-      <div>
-        <TextField
-          label="Password"
-          type="password"
-          name="password"
-          autoComplete="password"
-          {...config}
-        />
-      </div>
-      <div>
-        <Button
-          type="submit"
-          variant="contained"
-          color="primary"
-        >
-          Log In
-        </Button>
-      </div>
-    </form>
+    <Grid container className="main">
+      <Grid item xs={6} sm={6}>
+        <Card className="root">
+          <div className="icon">
+            <Avatar>
+              <LockIcon />
+            </Avatar>
+          </div>
+          <form onSubmit={handleSubmit}>
+            <div>
+              <TextField
+                label="username"
+                type="text"
+                name="username"
+                autoComplete="username"
+                {...config}
+              />
+            </div>
+            <div>
+              <TextField
+                label="Password"
+                type="password"
+                name="password"
+                autoComplete="password"
+                {...config}
+              />
+            </div>
+            <div>
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+              >
+                Log In
+              </Button>
+            </div>
+          </form>
 
-    <Divider className="form-spacer" />
+          <Divider className="form-spacer" />
 
-    <Typography variant="h6" className="form-spacer">
-      Don&apos;t have an account?
-    </Typography>
-    <Button variant="contained" color="secondary">
-      <Link style={{ color: 'white', textDecoration: 'none' }} to="/register">
-        Register
-      </Link>
-    </Button>
-  </>
+          <Typography variant="h6" className="form-spacer">
+            Don&apos;t have an account?
+          </Typography>
+          <Button variant="contained" color="secondary">
+            <Link style={{ color: 'white', textDecoration: 'none' }} to="/register">
+              Register
+            </Link>
+          </Button>
+        </Card>
+      </Grid>
+    </Grid>
   );
 };
 

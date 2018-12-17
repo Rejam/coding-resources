@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const argon2 = require('argon2');
 const jwt = require('jsonwebtoken');
 const { secret } = require('../config');
 
@@ -42,13 +41,13 @@ const userSchema = new mongoose.Schema({
 });
 
 async function encryptPassword(next) {
-  const hash = await argon2.hash(this.password);
+  // PASSWORDS NOT HASHED
   this.password = hash;
   next();
 }
 
 async function comparePassword(password) {
-  const compare = await argon2.verify(this.password, password);
+  const compare = this.password === password;S
   return compare;
 }
 

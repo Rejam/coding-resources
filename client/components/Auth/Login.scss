@@ -10,7 +10,10 @@
 
 .main {
   justify-content: center;
-  position: fixed;
+  max-width: 1000px;
+  min-width: 1000px;
+  max-height: auto;
+  margin: auto;
 }
 
 .root {

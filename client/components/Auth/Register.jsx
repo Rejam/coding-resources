@@ -43,7 +43,7 @@ class Register extends React.Component {
 
     return (
       <Grid container className="main">
-        <Grid xs={12} sm={6}>
+        <Grid xs={6} sm={6}>
           <Card className="root">
             <div className="icon">
               <Avatar>

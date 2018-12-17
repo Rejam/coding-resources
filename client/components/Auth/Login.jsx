@@ -38,7 +38,7 @@ const Login = ({ login, history }) => {
 
   return (
     <Grid container className="main">
-      <Grid item xs={12} sm={6}>
+      <Grid item xs={6} sm={6}>
         <Card className="root">
           <div className="icon">
             <Avatar>
